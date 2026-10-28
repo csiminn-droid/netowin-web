@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --fonte: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }
+
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+body { @apply bg-papel text-tinta antialiased; }
+
+@layer components {
+  .cartao { @apply bg-papel-cartao border border-papel-linha rounded-xl; }
+  .rotulo { @apply block text-sm font-medium text-tinta-suave mb-1; }
+  .campo { @apply w-full rounded-lg border border-papel-linha bg-white px-3 py-2.5 text-[15px] text-tinta outline-none transition
+    focus:border-marca focus:ring-2 focus:ring-marca/20 disabled:bg-papel disabled:text-tinta-suave; }
+  .botao { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-[15px] font-medium transition
+    disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap; }
+  .botao-primario { @apply botao bg-marca text-white hover:bg-marca-escura; }
+  .botao-secundario { @apply botao bg-white border border-papel-linha text-tinta hover:bg-papel; }
+  .botao-perigo { @apply botao bg-white border border-alerta/40 text-alerta hover:bg-alerta-clara; }
+  .botao-pequeno { @apply px-3 py-1.5 text-sm; }
+  .tabela { @apply w-full text-[14px]; }
+  .tabela th { @apply text-left font-medium text-tinta-suave bg-papel px-3 py-2 border-b border-papel-linha whitespace-nowrap; }
+  .tabela td { @apply px-3 py-2 border-b border-papel-linha align-top; }
+  .tabela tbody tr:hover { @apply bg-marca-clara/40; }
+  .num { @apply text-right tabular-nums whitespace-nowrap; }
+  .etiqueta { @apply inline-block rounded-full px-2 py-0.5 text-xs font-medium; }
+}

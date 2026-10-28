@@ -1,0 +1,12 @@
+import { createServerClient } from '@supabase/ssr';
+import { cookies } from 'next/headers';
+
+export function supabaseServidor() {
+  const loja = cookies();
+  return createServerClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, {
+    cookies: {
+      getAll() { return loja.getAll(); },
+      setAll(lista) { try { lista.forEach(({ name, value, options }) => loja.set(name, value, options)); } catch { /* chamado de um Server Component */ } },
+    },
+  });
+}
