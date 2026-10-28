@@ -11,7 +11,7 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
-  const sb = supabaseServidor();
+  const sb = await supabaseServidor();
   const { data: { user } } = await sb.auth.getUser();
   if (!user) return NextResponse.json({ erro: 'Faça login novamente' }, { status: 401 });
   const { data: ok } = await sb.rpc('autorizado');
